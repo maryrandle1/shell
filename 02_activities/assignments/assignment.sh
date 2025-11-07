@@ -43,10 +43,7 @@ cp ./data/raw/*event*log ./data/processed/event_logs/
 # 7. For user privacy, remove all files containing IP addresses (files with "ipaddr" in the filename) from ./data/raw and ./data/processed/user_logs
 rm -f ./data/raw/*ipaddr* ./data/processed/user_logs/*ipaddr*
 # 8. Create a file named ./data/inventory.txt that lists all the files in the subfolders of ./data/processed
-New-Item -ItemType Directory -Force -Path ./data | Out-Null
-Get-ChildItem -Path ./data/processed -Recurse -File |
-  Select-Object -ExpandProperty FullName |
-  Set-Content -Path ./data/inventory.txt
+New-Item -ItemType File -Path ./data/inventory.txt -Force
 
 ###########################################
 
